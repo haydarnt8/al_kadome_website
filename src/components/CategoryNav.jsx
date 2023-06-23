@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 
 const categorys = [
@@ -31,17 +30,17 @@ const categorys = [
     subCategory: [
       {
         id: 1,
-        name: "اضاءة",
+        name: "احمر",
         href: "#",
       },
       {
         id: 2,
-        name: "اضاءة",
+        name: "اصفر",
         href: "#",
       },
       {
         id: 3,
-        name: "اضاءة",
+        name: "ازرق",
         href: "#",
       },
     ],
@@ -182,9 +181,11 @@ const categorys = [
 
 function CategoryNav() {
   const [selectedCategory, setSelectedCategory] = useState(1);
-  // const [selectedSubCategory, setSelectedSubCategory] = useState(1);
+  const [selectedSubCategory, setSelectedSubCategory] = useState(1);
+
+
   return (
-    <div className="w-11/12">
+    <div id="Category" className="w-11/12">
       <div className=" py-3">
         <h1 className="text-4xl text-right text-slate-50 font-bold py-5 ">
           الاقسام
@@ -193,33 +194,10 @@ function CategoryNav() {
 
       <div className=" font-medium text-center text-[#9C3D54] border-b border-[#E2703A] ">
         <ul className="flex flex-row-reverse flex-wrap  gap-2 -mb-px text-xl">
-          {/* <li>
-            <button className="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 ">
-              Home
-            </button>
-          </li>
-          <li>
-            <button
-              className="inline-block p-4 text-slate-50 border-b-2 border-slate-50 rounded-t-lg active "
-              aria-current="page"
-            >
-              Calendar
-            </button>
-          </li>
-          <li>
-            <button className="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 ">
-              Results
-            </button>
-          </li>
-          <li>
-            <button className="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 ">
-              Live
-            </button>
-          </li> */}
           {categorys.map((category) => (
             <li key={category.id}>
               <button
-                className={`inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-[#E2703A] hover:border-gray-300 ${
+                className={`inline-block p-4 border-b-2 border-transparent transition rounded-t-lg hover:text-[#E2703A] hover:border-gray-300 ${
                   selectedCategory === category.id
                     ? "text-slate-50 border-slate-50"
                     : "text-gray-600 border-transparent"
@@ -232,6 +210,28 @@ function CategoryNav() {
           ))}
         </ul>
       </div>
+      <ul className="flex flex-row-reverse gap-4 py-4 text-lg">
+        {categorys.map((category) => {
+          if (category.id === selectedCategory) {
+            return category.subCategory.map((subCategory) => (
+              <li key={subCategory.id}>
+                <button
+                  className={`px-4 py-2  text-base rounded-lg transition text-slate-50 border border-[#E2703A] bg-[#9C3D54] hover:bg-[#c16179]  ${
+                    selectedSubCategory === subCategory.id
+                      ? "bg-[#E2703A] text-slate-50 border-[#E2703A]"
+                      : "bg-[#9C3D54] text-slate-50 border-[#E2703A]"
+                  }`}
+                  onClick={() => setSelectedSubCategory(subCategory.id)}
+                >
+                  {subCategory.name}
+                </button>
+              </li>
+            ));
+          } else {
+            return null;
+          }
+        })}
+      </ul>
     </div>
   );
 }
