@@ -55,11 +55,11 @@ const Card = ({ product, selectedProduct, setSelectedProduct }) => {
         onClick={() => handleClick(product.id)}
       >
         <div
-          className={`overflow-hidden rounded-lg bg-gray-200 
+          className={`overflow-hidden aspect-square rounded-lg bg-gray-200 
         ${
           product.id === selectedProduct
             ? " md:w-[45%] sm:w-[50%] xs:w-full aspect-square  "
-            : "aspect-h-1 aspect-w-1 w-full xl:aspect-h-8 xl:aspect-w-7"
+            : " w-full xl:aspect-h-8 xl:aspect-w-7"
         }
         `}
         >
