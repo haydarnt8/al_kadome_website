@@ -10,11 +10,11 @@ const Cards = ({ data, isLoading, error }) => {
     if (data && data.products) {
       dispatch(setProdutData(data.products));
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
-  
-const products = useSelector((state) => state.products.data);
-console.log(products);
+
+  const products = useSelector((state) => state.products.data);
+  console.log(products);
   const handleClick = () => {
     dispatch(setPage());
   };
