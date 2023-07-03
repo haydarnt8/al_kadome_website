@@ -11,11 +11,11 @@ export const pokemonSlice = createSlice({
     setPage: (state, action) => {
       state.page += 1;
     },
-    reset : (state, action) => {
+    resetPage : (state, action) => {
       state.page = 1;
     }
   },
 });
 
-export const { setPage , reset} = pokemonSlice.actions;
+export const { setPage , resetPage} = pokemonSlice.actions;
 export default pokemonSlice.reducer;

@@ -5,7 +5,7 @@ import pageReducer from "../app/services/pageSlice";
 
 export const store = configureStore({
   reducer: {
-    product: productReducer,
+    products: productReducer,
     page: pageReducer,
     [productApi.reducerPath]: productApi.reducer,
   },

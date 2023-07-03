@@ -8,7 +8,6 @@ import { useParams } from 'react-router-dom'
 const ProductBySearch = ({input}) => {
     const {title} = useParams();
     const { page } = useSelector((state) => state.page);
-    // console.log(title);
     const { data, isLoading, error } = useGetProductBySearchQuery({title, page});
 
   return (

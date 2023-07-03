@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { resetPage } from "../app/services/pageSlice";
+import { resetProducts } from "../app/services/productSlice";
 
 const Search = () => {
+  const dispatch = useDispatch();
   const [input, setInput] = useState("");
   const navigate = useNavigate();
   const handleSearch = (e) => {
@@ -12,7 +16,7 @@ const Search = () => {
     if (input === "") {
       navigate(`al_kadome_website/`);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [input]);
 
   return (
@@ -26,7 +30,12 @@ const Search = () => {
         aria-label="Search"
         aria-describedby="button-addon2"
       />
-      <Link to={`al_kadome_website/search/${input}`}>
+      <Link to={`al_kadome_website/search/${input}`}
+        onClick={() => {
+          dispatch(resetPage());
+          dispatch(resetProducts());
+        }}
+      >
         <span
           className="cursor-pointer input-group-text flex items-center whitespace-nowrap rounded px-3 py-1.5 text-center text-base font-normal text-neutral-700 dark:text-neutral-200"
           id="basic-addon2"

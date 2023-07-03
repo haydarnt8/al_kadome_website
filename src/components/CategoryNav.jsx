@@ -5,7 +5,8 @@ import {
 } from "../app/services/productApi";
 import { Link, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { reset } from "../app/services/pageSlice";
+import { resetPage } from "../app/services/pageSlice";
+import { resetProducts } from "../app/services/productSlice";
 
 function CategoryNav() {
   const location = useLocation();
@@ -80,7 +81,9 @@ function CategoryNav() {
                       }`}
                       onClick={() => {
                         setSelectedCategory(category.id);
-                        dispatch(reset());
+                        dispatch(resetPage());
+                        dispatch(resetProducts());
+
                       }}
                     >
                       {category.name}
@@ -111,7 +114,8 @@ function CategoryNav() {
                       }`}
                       onClick={() => {
                         setSelectedSubCategory(subCategory.id);
-                        dispatch(reset());
+                        dispatch(resetPage());
+                        dispatch(resetProducts());
                       }}
                     >
                       {subCategory.name}
