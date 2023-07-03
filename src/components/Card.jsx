@@ -64,8 +64,8 @@ const Card = ({ product, selectedProduct, setSelectedProduct }) => {
         `}
         >
           <img
-            src={product.imageSrc}
-            alt={product.imageAlt}
+            src={product.image}
+            alt={product.name}
             className="h-full w-full object-cover object-center transition group-hover:opacity-75"
           />
         </div>
@@ -87,10 +87,7 @@ const Card = ({ product, selectedProduct, setSelectedProduct }) => {
           </h3>
           {product.id === selectedProduct && (
             <p className="mt-1 text-base font-medium text-white">
-              "Effortlessly illuminating your space, this sleek and compact
-              light product radiates a gentle glow, blending style and
-              functionality. Its versatility enhances any setting, making it the
-              perfect addition to your home or office decor."
+              {product.description}
             </p>
           )}
           <p
