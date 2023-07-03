@@ -1,26 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Card from "./Card";
-// import { useGetAllProductQuery } from "../app/services/productApi";
 import { useDispatch } from "react-redux";
-// import { setProdutData } from "../app/services/productSlice";
 import { setPage } from "../app/services/pageSlice";
 
 const Cards = ({ data, isLoading, error }) => {
+  const [products, setProducts] = useState([]);
   const dispatch = useDispatch();
-  // <>
-  // const [products, setProducts] = useState([]);
-  // const { data, isLoading, error } = useGetAllProductQuery(
-  //   useSelector((state) => state.page.page)
-  // );
-  // console.log(data.has_next);
+  useEffect(() => {
+    if (data) {
+      setProducts((prev) => [...prev, ...data.products ]);
+    }
+  }, [data]);
 
-  // useEffect(() => {
-  //   if (data && data.products) {
-  //     dispatch(setProdutData(data.products));
-  //     setProducts(data.products);
-  //   }
-  // }, [data, dispatch]);
-// </>
   const handleClick = () => {
     dispatch(setPage());
   };
@@ -40,7 +31,7 @@ const Cards = ({ data, isLoading, error }) => {
             {error.message}
           </div>
         ) : (
-          data.products.map((product) => (
+          products.map((product) => (
             <Card
               key={product.id}
               product={product}
@@ -50,16 +41,16 @@ const Cards = ({ data, isLoading, error }) => {
           ))
         )}
       </div>
-      { data && data.has_next ? (
-               <div className="w-full my-10 flex justify-center items-center relative">
-               <hr className="w-full" />
-               <button
-                 onClick={handleClick}
-                 className="absolute py-2 px-4 bg-green-600 hover:bg-green-700 focus:ring-green-500 focus:ring-offset-green-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 "
-               >
-                 Load More
-               </button>
-             </div>
+      {data && data.has_next ? (
+        <div className="w-full my-10 flex justify-center items-center relative">
+          <hr className="w-full" />
+          <button
+            onClick={handleClick}
+            className="absolute py-2 px-4 bg-green-600 hover:bg-green-700 focus:ring-green-500 focus:ring-offset-green-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 "
+          >
+            Load More
+          </button>
+        </div>
       ) : null}
     </div>
   );
