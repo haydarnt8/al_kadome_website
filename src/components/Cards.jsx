@@ -1,17 +1,20 @@
 import { useEffect, useState } from "react";
 import Card from "./Card";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setPage } from "../app/services/pageSlice";
+import { setProdutData } from "../app/services/productSlice";
 
 const Cards = ({ data, isLoading, error }) => {
-  const [products, setProducts] = useState([]);
   const dispatch = useDispatch();
   useEffect(() => {
-    if (data) {
-      setProducts((prev) => [...prev, ...data.products ]);
+    if (data && data.products) {
+      dispatch(setProdutData(data.products));
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
-
+  
+const products = useSelector((state) => state.products.data);
+console.log(products);
   const handleClick = () => {
     dispatch(setPage());
   };
@@ -23,7 +26,7 @@ const Cards = ({ data, isLoading, error }) => {
         المنتجات
       </h1>
 
-      <div className="grid grid-cols-1 gap-x-4 gap-y-10 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xs:grid-cols-2 xl:gap-x-4">
+      <div className="grid grid-cols-1 mb-12 gap-x-4 gap-y-10 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xs:grid-cols-2 xl:gap-x-4">
         {isLoading ? (
           <p className="text-white">loding...</p>
         ) : error ? (
