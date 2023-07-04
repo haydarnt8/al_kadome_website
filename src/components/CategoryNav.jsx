@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   useGetCategoryQuery,
   useGetSubCategoryQuery,
@@ -11,49 +11,28 @@ import { resetProducts } from "../app/services/productSlice";
 function CategoryNav() {
   const location = useLocation();
   const dispatch = useDispatch();
-  const cid = parseInt(location.pathname.split("/")[3]);
-  const s_cid = parseInt(location.pathname.split("/")[5]);
-  const [selectedCategory, setSelectedCategory] = useState(cid);
-  const [selectedSubCategory, setSelectedSubCategory] = useState(s_cid);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedSubCategory, setSelectedSubCategory] = useState(null);
   const { data: category, isLoading, error } = useGetCategoryQuery();
   const {
     data: subCategory,
     isLoading: subIsLoading,
     error: subError,
   } = useGetSubCategoryQuery(selectedCategory);
-  // {// const {
-  // //   data: categoryData,
-  // //   isLoading: productIsLoading,
-  // //   error: productError,
-  // // } = useGetProductByCategoryQuery(selectedCategory);
-  // // const {
-  // //   data: subData,
-  // //   isLoading: subProductIsLoading,
-  // //   error: subProductError,
-  // // } = useGetProductBySubCategoryQuery(selectedSubCategory);
 
-  // // const handleCategoryClick = async (cid) => {
-  // //   setSelectedCategory(cid);
-  // //   console.log(selectedCategory);
-  // //   await categoryData;
-  // //   console.log(productIsLoading);
-  // //   console.log(categoryData.products);
-  // //   console.log(
-  // //     "categoryData.productscategoryData.productscategoryData.products"
-  // //   );
-  // // };
+  useEffect(() => {
+    // Splitting the pathname by '/'
+    const pathParts = location.pathname.split("/");
 
-  // // const handleSubCategoryClick = (s_cid) => {
-  // //   if (subData && subData.products) {
-  // //     setSelectedSubCategory(s_cid);
-  // //     dispatch(setProdutData(subData.products));
-  // //     console.log(subData.products);
-  // //   }
-  // // };
-  // }
-  // console.log(selectedCategory + "selectedCategory");
-  // console.log(selectedSubCategory + "selectedSubCategory");
+    // Finding the indices of 'cid' and 's_cid'
+    const cidIndex = pathParts.indexOf("cid");
+    const sCidIndex = pathParts.indexOf("s_cid");
 
+    setSelectedCategory(parseInt(pathParts[cidIndex + 1]));
+    setSelectedSubCategory(parseInt(pathParts[sCidIndex + 1]));
+
+  }, [location, selectedCategory, selectedSubCategory]);
+  
   return (
     <>
       {isLoading ? (
@@ -70,7 +49,7 @@ function CategoryNav() {
 
           <div className=" font-medium text-center text-[#9C3D54] border-b border-[#E2703A] ">
             <ul className="flex flex-row-reverse flex-wrap  gap-2 -mb-px text-xl">
-              {category.map((category) =>  (
+              {category.map((category) => (
                 <li key={category.id}>
                   <Link to={`al_kadome_website/cid/${category.id}`}>
                     <button
@@ -83,7 +62,6 @@ function CategoryNav() {
                         setSelectedCategory(category.id);
                         dispatch(resetPage());
                         dispatch(resetProducts());
-
                       }}
                     >
                       {category.name}

@@ -14,7 +14,6 @@ const Cards = ({ data, isLoading, error }) => {
   }, [data]);
 
   const products = useSelector((state) => state.products.data);
-  console.log(products);
   const handleClick = () => {
     dispatch(setPage());
   };

@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { resetPage } from "../app/services/pageSlice";
 import { resetProducts } from "../app/services/productSlice";
 
+
 const Search = () => {
   const dispatch = useDispatch();
   const [input, setInput] = useState("");
@@ -14,7 +15,8 @@ const Search = () => {
 
   useEffect(() => {
     if (input === "") {
-      navigate(`al_kadome_website/`);
+      navigate("/al_kadome_website");
+      dispatch(resetProducts());
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [input]);
