@@ -70,7 +70,7 @@ const Card = ({ product, selectedProduct, setSelectedProduct }) => {
           />
         </div>
         <div
-          className={` flex flex-col gap-3 items-end
+          className={` flex flex-col gap-3
         ${
           product.id === selectedProduct
             ? "md:w-[55%] sm:w-[50%] xs:w-full "
@@ -93,7 +93,7 @@ const Card = ({ product, selectedProduct, setSelectedProduct }) => {
             </p>
           )}
           <div
-            className={` text-white
+            className={` text-white flex gap-1 items-center
             ${
               product.id === selectedProduct
                 ? "text-2xl"
@@ -101,16 +101,14 @@ const Card = ({ product, selectedProduct, setSelectedProduct }) => {
             }          
           `}
           >
+            <p> السعر :</p>
             <p>{product.price}$ </p>
           </div>
           {product.id === selectedProduct && (
-            <div className="w-full flex items-center justify-between text-gray-100 sm:flex-row xs:flex-col-reverse">
-              <a href="https://wa.me/9647727405095" className="">
-                <svg
-                  width="207"
-                  height="48"
-                  fill="none"
-                >
+            <div className="w-full flex items-center justify-between text-gray-100 md:flex-row xs:flex-col-reverse xs:text-sm">
+                    <div className="text-right">للطلب يرجى مراسلة الصفحة على الـ</div>
+              <a href="https://wa.me/9647727405095" target="_new">
+                <svg width="207" height="48" fill="none">
                   <g clipPath="url(#a)">
                     <path
                       fillRule="evenodd"
@@ -125,7 +123,6 @@ const Card = ({ product, selectedProduct, setSelectedProduct }) => {
                   />
                 </svg>
               </a>
-              <div className="text-right">للطلب يرجى مراسلة الصفحة على الـ</div>
             </div>
           )}
         </div>
