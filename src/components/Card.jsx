@@ -73,7 +73,7 @@ const Card = ({ product, selectedProduct, setSelectedProduct }) => {
             <ul className="flex justify-center items-center gap-3 rounded-xl bg-[#00000078] md:p-3 sm:p-2 xs:p-1 sm:flex-col xs:flex-row   sm:h-auto xs:h-16">
               {images.map((image, index) => (
                 <li
-                  className="w-full sm:h-auto xs:h-full"
+                  className="sm:w-full sm:h-auto xs:h-full"
                   key={index}
                   onClick={(e) => {
                     e.stopPropagation();
