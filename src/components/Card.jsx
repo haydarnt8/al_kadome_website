@@ -1,9 +1,15 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./Card.module.css";
 import "./animation.css";
 
 const Card = ({ product, selectedProduct, setSelectedProduct }) => {
   const productRefs = useRef([]);
+  const images =
+    product.images.length === 0
+      ? [product.image]
+      : [product.image].concat(product.images.map((image) => image.image));
+
+  const [selectedImage, setSelectedImage] = useState(product.image);
 
   const handleClick = (productId) => {
     if (selectedProduct === productId) {
@@ -49,24 +55,48 @@ const Card = ({ product, selectedProduct, setSelectedProduct }) => {
         className={`group p-2 ${styles.card}
         ${
           product.id === selectedProduct
-            ? "col-span-full flex sm:gap-10 px-10 items-center sm:flex-row xs:flex-col xs:gap-4 animated fadeIn "
+            ? "col-span-full flex sm:gap-10 p-3 items-center sm:flex-row xs:flex-col xs:gap-4 animated fadeIn "
             : ""
         } `}
         onClick={() => handleClick(product.id)}
       >
         <div
-          className={`overflow-hidden aspect-square rounded-lg bg-gray-200 
+          className={` flex gap-2 justify-between rounded-lg sm:flex-row xs:flex-col-reverse
         ${
           product.id === selectedProduct
-            ? " md:w-[45%] sm:w-[50%] xs:w-full aspect-square  "
+            ? " md:w-[45%] sm:w-[50%] xs:w-full"
             : " w-full xl:aspect-h-8 xl:aspect-w-7"
         }
         `}
         >
+          {product.id === selectedProduct ? (
+            <ul className="flex justify-center items-center overflow-auto gap-3 rounded-xl bg-[#00000078] md:p-3 sm:p-2 xs:p-1 sm:flex-col xs:flex-row sm:h-auto xs:h-16">
+              {images.map((image, index) => (
+                <li
+                  className="aspect-square sm:h-auto xs:h-full"
+                  key={index}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setSelectedImage(image);
+                  }}
+                >
+                  <img
+                    className={`object-cover w-full h-full rounded-sm
+                    ${image === selectedImage ? "" : "opacity-50"}
+                    `}
+                    src={image}
+                    alt={product.name}
+                  />
+                </li>
+              ))}
+            </ul>
+          ) : null}
           <img
-            src={product.image}
+            src={selectedImage}
             alt={product.name}
-            className="h-full w-full object-cover object-center transition group-hover:opacity-75"
+            className={`aspect-square object-cover object-center transition md:group-hover:opacity-75
+            ${product.id === selectedProduct ? " sm:w-5/6 xs:w-auto" : ""}
+            `}
           />
         </div>
         <div
@@ -81,14 +111,14 @@ const Card = ({ product, selectedProduct, setSelectedProduct }) => {
           <h3
             className={`mt-4  text-gray-100
           ${
-            product.id === selectedProduct ? "text-3xl" : "text-sm xl:text-base"
+            product.id === selectedProduct ? "md:text-3xl sm:text-2xl xs:text-xl" : "xl:text-base xs:text-sm"
           }
           `}
           >
             {product.name}
           </h3>
           {product.id === selectedProduct && (
-            <p className="mt-1 text-base font-medium text-white">
+            <p className="mt-1 md:text-lg sm:text-base xs:text-sm font-medium text-white">
               {product.description}
             </p>
           )}
@@ -96,18 +126,25 @@ const Card = ({ product, selectedProduct, setSelectedProduct }) => {
             className={` text-white flex gap-1 items-center
             ${
               product.id === selectedProduct
-                ? "text-2xl"
-                : "mt-1 text-lg font-medium sm:text-base xs:text-sm"
+                ? "md:text-2xl sm:text-xl xs:text-lg"
+                : "mt-1 font-medium sm:text-base xs:text-sm"
             }          
           `}
           >
             <p> السعر :</p>
-            <p>{product.price}$ </p>
+            <p>
+              {product.price.toLocaleString() }
+              <small className="text-slate-200"> د.ع</small>
+            </p>
           </div>
           {product.id === selectedProduct && (
-            <div className="w-full flex items-center justify-between text-gray-100 md:flex-row xs:flex-col-reverse xs:text-sm">
-                    <div className="text-right">للطلب يرجى مراسلة الصفحة على الـ</div>
-              <a href="https://wa.me/9647727405095" target="_new">
+            <div className="flex items-center  text-gray-100 md:flex-row xs:flex-col xs:text-sm">
+              <div className="text-right">للطلب يرجى مراسلة الصفحة على الـ</div>
+              <a
+                href="https://wa.me/9647704866012"
+                target="_new"
+                onClick={(e) => e.stopPropagation()}
+              >
                 <svg width="207" height="48" fill="none">
                   <g clipPath="url(#a)">
                     <path

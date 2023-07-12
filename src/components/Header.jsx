@@ -3,7 +3,7 @@ import Search from "./Search";
 const Header = () => {
   return (
     <>
-      <header className="sticky top-0 z-40 items-center w-full h-16 shadow-lg bg-[#000000]">
+      <header className="sticky -inset-1 z-40 items-center w-full h-16 shadow-lg bg-[#000000]">
         <div className="relative z-20 flex flex-col justify-center mx-auto w-11/12 h-full flex-center">
           <div className="relative flex justify-between items-center w-full outline">
             <div className="relative flex items-center gap-2 ">

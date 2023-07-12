@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const productApi = createApi({
   reducerPath: "productApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://haydarnt8.pythonanywhere.com" }),
+  baseQuery: fetchBaseQuery({ baseUrl: "https://haydarnt8.pythonanywhere.com" }),
   endpoints: (builder) => ({
     getCategory: builder.query({
       query: () => "/category/",

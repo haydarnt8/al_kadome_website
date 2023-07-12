@@ -1,44 +1,42 @@
-import React, { useEffect, useState } from "react";
-// import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
-// import { RxDotFilled } from "react-icons/rx";
+import { MdLocationOn } from "react-icons/md";
 
 const Slider = () => {
-  const slides = [
-    {
-      url: "https://picsum.photos/id/870/200/300?grayscale&blur=2",
-    },
-    {
-      url: "https://picsum.photos/id/870/200/300?grayscale&blur=2",
-    },
-    {
-      url: "https://picsum.photos/id/870/200/300?grayscale&blur=2",
-    },
+  // const slides = [
+  //   {
+  //     url: "https://picsum.photos/id/870/200/300?grayscale&blur=2",
+  //   },
+  //   {
+  //     url: "https://picsum.photos/id/870/200/300?grayscale&blur=2",
+  //   },
+  //   {
+  //     url: "https://picsum.photos/id/870/200/300?grayscale&blur=2",
+  //   },
 
-    {
-      url: "https://picsum.photos/id/870/200/300?grayscale&blur=2",
-    },
-    {
-      url: "https://picsum.photos/id/870/200/300?grayscale&blur=2",
-    },
-  ];
+  //   {
+  //     url: "https://picsum.photos/id/870/200/300?grayscale&blur=2",
+  //   },
+  //   {
+  //     url: "https://picsum.photos/id/870/200/300?grayscale&blur=2",
+  //   },
+  // ];
 
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [hover, setHover] = useState(true);
+  // const [currentIndex, setCurrentIndex] = useState(0);
+  // const [hover, setHover] = useState(true);
 
-  const nextSlide = () => {
-    const isLastSlide = currentIndex === slides.length - 1;
-    const newIndex = isLastSlide ? 0 : currentIndex + 1;
-    setCurrentIndex(newIndex);
-  };
+  // const nextSlide = () => {
+  //   const isLastSlide = currentIndex === slides.length - 1;
+  //   const newIndex = isLastSlide ? 0 : currentIndex + 1;
+  //   setCurrentIndex(newIndex);
+  // };
 
-  useEffect(() => {
-    if (hover) {
-      const interval = setInterval(() => {
-        nextSlide();
-      }, 4500);
-      return () => clearInterval(interval);
-    }
-  });
+  // useEffect(() => {
+  //   if (hover) {
+  //     const interval = setInterval(() => {
+  //       nextSlide();
+  //     }, 4500);
+  //     return () => clearInterval(interval);
+  //   }
+  // });
 
   const gradientStyle = {
     background:
@@ -49,11 +47,11 @@ const Slider = () => {
     <div
       id="Home"
       className=" md:h-[65vh] sm:h-[60vh] xs:h-[50vh] w-full m-auto relative group"
-      onMouseEnter={() => setHover(false)}
-      onMouseLeave={() => setHover(true)}
+      // onMouseEnter={() => setHover(false)}
+      // onMouseLeave={() => setHover(true)}
     >
       <div
-        style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
+        style={{ backgroundImage: `url(https://firebasestorage.googleapis.com/v0/b/al-kadome-9f8ab.appspot.com/o/775153.webp?alt=media&token=933eb53e-83c9-4837-abb9-2791f781a671)` }}
         className="w-full h-full bg-center bg-cover duration-500"
       >
         <div
@@ -74,6 +72,18 @@ const Slider = () => {
               وجهتك المثالية للإضاءة العصرية والمبتكرة، حيث نوفر لكم مجموعة
               واسعة من الثريات وأجهزة الإضاءة بتصاميم مبتكرة وجودة عالية
             </h2>
+            <h3
+              className="text-slate-300 lg:text-lg md:text-base sm:text-sm flex items-center gap-2 "
+              style={{ userSelect: "none" }}
+            >
+            بغداد/الكاظمية/شارع باب القبلة
+              <a target="_new"
+              href="https://goo.gl/maps/h83BajfSEXd1Mvws6"
+              className="text-4xl"
+              >
+                <MdLocationOn />
+              </a>
+            </h3>
             <div className="flex  items-center md:gap-8 sm:gap-6 xs:gap-4">
               <div>
                 <h1

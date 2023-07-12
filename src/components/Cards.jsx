@@ -19,7 +19,7 @@ const Cards = ({ data, isLoading, error }) => {
 
   return (
     <div  id="Products" className="w-11/12 py-4">
-      <h1 className="text-4xl text-slate-50 font-bold pb-10">
+      <h1 className="sm:text-4xl xs:text-3xl text-slate-50 font-bold pb-10">
         المنتجات
       </h1>
 
@@ -27,8 +27,8 @@ const Cards = ({ data, isLoading, error }) => {
         {isLoading ? (
           <SkeletonCard />
         ) : error ? (
-          <div className="text-center text-2xl text-red-500">
-            {error.message}
+          <div className="text-center text-2xl text-red-500 col-span-full flex items-center justify-center">
+            <p>لا يوجد</p>
           </div>
         ) : (
           products.map((product) => (

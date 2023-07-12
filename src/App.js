@@ -10,7 +10,7 @@ import ProductBySearch from "./components/ProductBySearch";
 
 function App() {
   return (
-    <main className="bg-[#060606] flex flex-col items-center  ">
+    <main className="bg-[#0f0f0f] flex flex-col items-center  ">
       <Slider />
       <Header />
       <CategoryNav />

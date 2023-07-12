@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { resetPage } from "../app/services/pageSlice";
 import { resetProducts } from "../app/services/productSlice";
 import SkeletonCategory from "./SkeletonCategory";
+import { MdClear } from "react-icons/md";
 
 function CategoryNav() {
   const location = useLocation();
@@ -22,7 +23,6 @@ function CategoryNav() {
   } = useGetSubCategoryQuery(selectedCategory);
 
   useEffect(() => {
-    
     // Splitting the pathname by '/'
     const pathParts = location.pathname.split("/");
 
@@ -38,11 +38,11 @@ function CategoryNav() {
     <>
       <div id="Category" className="w-11/12">
         <div className=" py-3">
-          <h1 className="text-4xl text-slate-50 font-bold py-5 ">الاقسام</h1>
+          <h1 className="sm:text-4xl xs:text-3xl text-slate-50 font-bold py-5 ">الاقسام</h1>
         </div>
 
-        <div className=" font-medium text-center text-[#9C3D54] border-b border-[#E2703A] ">
-          <ul className="flex flex-wrap  gap-2 -mb-px text-xl">
+        <div className=" font-medium text-center text-[#9C3D54] border-b border-[#322717] ">
+          <ul className="flex flex-wrap gap-2 -mb-px sm:text-xl xs:text-lg ">
             {isLoading ? (
               <>
                 <SkeletonCategory />
@@ -65,10 +65,10 @@ function CategoryNav() {
                     }
                   >
                     <button
-                      className={`inline-block p-4 border-b-2 border-transparent transition rounded-t-lg hover:text-[#E2703A] hover:border-gray-300 ${
+                      className={`flex items-center gap-1 p-2 border-b-2 border-transparent transition rounded-t-lg hover:border-gray-300 ${
                         selectedCategory === category.id
                           ? "text-slate-50 border-slate-50"
-                          : "text-gray-600 border-transparent"
+                          : "text-gray-500 border-transparent"
                       }`}
                       onClick={() => {
                         dispatch(resetPage());
@@ -77,6 +77,7 @@ function CategoryNav() {
                       }}
                     >
                       {category.name}
+                      {selectedCategory === category.id && <MdClear />}
                     </button>
                   </Link>
                 </li>
@@ -84,7 +85,7 @@ function CategoryNav() {
             )}
           </ul>
         </div>
-        <ul className="flex gap-4 py-4 text-lg">
+        <ul className="flex gap-4 py-4 sm:text-lg xs:text-base">
           {subIsLoading ? (
             <p>loding...</p>
           ) : subError ? (
@@ -102,10 +103,10 @@ function CategoryNav() {
                   }
                 >
                   <button
-                    className={`px-4 py-2  text-base rounded-lg transition bg-[#9C3D54] border-[#E2703A] text-slate-50 border hover:bg-[#c16179]  ${
+                    className={`px-4 py-2 flex items-center gap-1 text-base rounded-lg transition border-[#522815] text-slate-50 border  ${
                       selectedSubCategory === subCategory.id
-                        ? "bg-[#E2703A]"
-                        : ""
+                        ? "bg-[#070402]"
+                        : "bg-[#3227172b]"
                     }`}
                     onClick={() => {
                       dispatch(resetPage());
@@ -114,6 +115,7 @@ function CategoryNav() {
                     }}
                   >
                     {subCategory.name}
+                    {selectedSubCategory === subCategory.id && <MdClear />}
                   </button>
                 </Link>
               </li>
@@ -121,7 +123,6 @@ function CategoryNav() {
           )}
         </ul>
       </div>
-      )
     </>
   );
 }

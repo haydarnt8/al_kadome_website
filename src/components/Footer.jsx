@@ -14,23 +14,18 @@ const Footer = () => {
         <div className="flex flex-col mt-4 md:mt-0 md:flex-row">
           <nav className="flex flex-col items-center justify-center flex-1 border-gray-100 md:items-end md:border-r md:pr-5">
             <a
-              target="_new"
               href="#Home"
               className="hover:text-gray-700 dark:hover:text-white"
             >
               الرئيسية
             </a>
             <a
-              target="_new"
-              // aria-current="page"
               href="#Category"
               className="hover:text-gray-700 dark:hover:text-white"
             >
               الاقسام
             </a>
             <a
-              target="_new"
-              // aria-current="page"
               href="#Products"
               className="hover:text-gray-700 dark:hover:text-white"
             >
@@ -75,31 +70,13 @@ const Footer = () => {
           </div>
           <div className="sss h-px mx-auto mt-4 rounded-full md:hidden w-11 "></div>
           <div className="flex gap-1 flex-col items-center justify-center flex-1 mt-7 md:mt-0 md:items-start md:pl-5">
-            <span className="flex items-center">
+            <span className="flex gap-1 items-center">
               <BiPhone />
               <a
                 className=" hover:text-primary-gray-20"
-                href="tel:+201010101010"
+                href="tel:+9647704866012"
               >
-                +201010101010
-              </a>
-            </span>
-            <span className="flex items-center">
-              <BiPhone />
-              <a
-                className=" hover:text-primary-gray-20"
-                href="tel:+201010101010"
-              >
-                +201010101010
-              </a>
-            </span>
-            <span className="flex items-center">
-              <BiPhone />
-              <a
-                className=" hover:text-primary-gray-20"
-                href="tel:+201010101010"
-              >
-                +201010101010
+                <p className="text-lg">07704866012</p>
               </a>
             </span>
           </div>
