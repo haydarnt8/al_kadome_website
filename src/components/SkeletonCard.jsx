@@ -21,11 +21,11 @@ const SkeletonCard = () => {
         </div>
         <div className="flex flex-col gap-3">
           <div className="w-11/12 mt-4">
-              <div className="h-4 bg-gray-200 rounded-full dark:bg-gray-700 "></div>
+              <div className="h-4 rounded-full bg-gray-700 "></div>
           </div>
           <div className="text-white flex gap-1 items-center mt-1 text-lg font-medium sm:text-base xs:text-sm">
             <div className="w-8/12">
-              <div className="h-3 bg-gray-200 rounded-full dark:bg-gray-700"></div>
+              <div className="h-3 rounded-full bg-gray-700"></div>
             </div>
           </div>
         </div>
