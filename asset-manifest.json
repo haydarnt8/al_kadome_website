@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/al_kadome_website/static/css/main.e0495412.css",
-    "main.js": "/al_kadome_website/static/js/main.f5431b57.js",
+    "main.js": "/al_kadome_website/static/js/main.8a673b3c.js",
     "static/js/787.1defae72.chunk.js": "/al_kadome_website/static/js/787.1defae72.chunk.js",
     "static/media/download.webp": "/al_kadome_website/static/media/download.d0cc0c38103868f1f988.webp",
     "index.html": "/al_kadome_website/index.html",
     "main.e0495412.css.map": "/al_kadome_website/static/css/main.e0495412.css.map",
-    "main.f5431b57.js.map": "/al_kadome_website/static/js/main.f5431b57.js.map",
+    "main.8a673b3c.js.map": "/al_kadome_website/static/js/main.8a673b3c.js.map",
     "787.1defae72.chunk.js.map": "/al_kadome_website/static/js/787.1defae72.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e0495412.css",
-    "static/js/main.f5431b57.js"
+    "static/js/main.8a673b3c.js"
   ]
 }
