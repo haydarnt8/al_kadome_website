@@ -52,7 +52,7 @@ const Card = ({ product, selectedProduct, setSelectedProduct }) => {
       <div
         key={product.id}
         ref={(element) => handleProductRef(element, product.id)}
-        className={`group p-2 ${styles.card}
+        className={`p-2 ${styles.card}
         ${
           product.id === selectedProduct
             ? "col-span-full flex sm:gap-10 p-3 items-center sm:flex-row xs:flex-col xs:gap-4 animated fadeIn "
@@ -70,10 +70,10 @@ const Card = ({ product, selectedProduct, setSelectedProduct }) => {
         `}
         >
           {product.id === selectedProduct ? (
-            <ul className="flex justify-center items-center overflow-auto gap-3 rounded-xl bg-[#00000078] md:p-3 sm:p-2 xs:p-1 sm:flex-col xs:flex-row sm:h-auto xs:h-16">
+            <ul className="flex justify-center items-center gap-3 rounded-xl bg-[#00000078] md:p-3 sm:p-2 xs:p-1 sm:flex-col xs:flex-row   sm:h-auto xs:h-16">
               {images.map((image, index) => (
                 <li
-                  className="aspect-square sm:h-auto xs:h-full"
+                  className="w-full sm:h-auto xs:h-full"
                   key={index}
                   onClick={(e) => {
                     e.stopPropagation();
@@ -81,7 +81,7 @@ const Card = ({ product, selectedProduct, setSelectedProduct }) => {
                   }}
                 >
                   <img
-                    className={`object-cover w-full h-full rounded-sm
+                    className={`aspect-square object-cover w-full h-full rounded-sm
                     ${image === selectedImage ? "" : "opacity-50"}
                     `}
                     src={image}
@@ -94,7 +94,7 @@ const Card = ({ product, selectedProduct, setSelectedProduct }) => {
           <img
             src={selectedImage}
             alt={product.name}
-            className={`aspect-square object-cover object-center transition md:group-hover:opacity-75
+            className={`aspect-square object-cover object-center transition md:hover:opacity-75
             ${product.id === selectedProduct ? " sm:w-5/6 xs:w-auto" : ""}
             `}
           />

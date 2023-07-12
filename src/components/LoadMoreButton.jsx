@@ -5,7 +5,7 @@ import { setPage } from "../app/services/pageSlice";
 const LoadMoreButton = () => {
   const dispatch = useDispatch();
   return (
-    <div className="w-full my-16 flex justify-center items-center relative">
+    <div className="w-full my-12 flex justify-center items-center relative">
       <hr className="w-full border-[#322717]" />
       <button
         onClick={() => dispatch(setPage())}
