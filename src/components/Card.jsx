@@ -70,10 +70,10 @@ const Card = ({ product, selectedProduct, setSelectedProduct }) => {
         `}
         >
           {product.id === selectedProduct ? (
-            <ul className="flex justify-center items-center gap-3 rounded-xl bg-[#00000078] md:p-3 sm:p-2 xs:p-1 sm:flex-col xs:flex-row   sm:h-auto xs:h-16">
+            <ul className="flex justify-center items-center gap-3 rounded-xl bg-[#00000078] p-1 sm:flex-col xs:flex-row   sm:h-auto xs:h-16">
               {images.map((image, index) => (
                 <li
-                  className="sm:w-full sm:h-auto xs:h-full"
+                  className="sm:w-full xs:w-auto sm:h-auto xs:h-full"
                   key={index}
                   onClick={(e) => {
                     e.stopPropagation();
