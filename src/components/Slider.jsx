@@ -87,7 +87,7 @@ const Slider = () => {
                 <MdLocationOn />
               </a>
             </h3>
-            <div className="flex  items-center md:gap-8 sm:gap-6 xs:gap-4">
+            <div className="flex items-center md:gap-6 sm:gap-4 xs:gap-1">
               <div>
                 <h1
                   className="text-slate-300 lg:text-lg md:text-base sm:text-sm"
