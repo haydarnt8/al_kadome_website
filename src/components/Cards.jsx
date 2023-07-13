@@ -23,7 +23,7 @@ const Cards = ({ data, isLoading, error }) => {
         المنتجات
       </h1>
 
-      <div className=" grid grid-cols-1 mb-12 sm:gap-x-4 xs:gap-x-2 md:gap-y-8 sm:gap-y-6 xs:gap-y-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xs:grid-cols-2 xl:gap-x-4">
+      <div className=" grid grid-cols-1 mb-12 sm:gap-x-4 xs:gap-x-2 md:gap-y-8 sm:gap-y-6 xs:gap-y-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 xs:grid-cols-2 xl:gap-x-4">
         {isLoading ? (
           <SkeletonCard />
         ) : error ? (

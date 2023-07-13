@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "./Card.module.css";
 import "./animation.css";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 const Card = ({ product, selectedProduct, setSelectedProduct }) => {
   const productRefs = useRef([]);
@@ -9,7 +11,7 @@ const Card = ({ product, selectedProduct, setSelectedProduct }) => {
       ? [product.image]
       : [product.image].concat(product.images.map((image) => image.image));
 
-  const [selectedImage, setSelectedImage] = useState(product.image);
+  const [selectedImage, setSelectedImage] = useState(images[0]);
 
   const handleClick = (productId) => {
     if (selectedProduct === productId) {
@@ -70,34 +72,46 @@ const Card = ({ product, selectedProduct, setSelectedProduct }) => {
         `}
         >
           {product.id === selectedProduct ? (
-            <ul className="flex justify-center items-center gap-3 rounded-xl bg-[#00000078] p-1 sm:flex-col xs:flex-row   sm:h-auto xs:h-16">
-              {images.map((image, index) => (
-                <li
-                  className="sm:w-full xs:w-auto sm:h-auto xs:h-full"
-                  key={index}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setSelectedImage(image);
-                  }}
-                >
-                  <img
-                    className={`aspect-square object-cover w-full h-full rounded-sm
-                    ${image === selectedImage ? "" : "opacity-50"}
-                    `}
-                    src={image}
-                    alt={product.name}
-                  />
-                </li>
-              ))}
-            </ul>
+            <div className="sm:h-auto xs:h-16 sm:w-[18%] xs:w-auto rounded-xl bg-[#00000078] p-1">
+              <ul className="flex items-center gap-3  sm:flex-col xs:flex-row w-full h-full ">
+                {images.map((image, index) => (
+                  <li
+                    className={`sm:aspect-auto xs:aspect-square sm:w-full xs:w-auto sm:h-auto xs:h-full ${
+                      image === selectedImage ? "" : "opacity-50"
+                    }`}
+                    key={index}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setSelectedImage(image);
+                    }}
+                  >
+                    <LazyLoadImage
+                      effect="blur"
+                      height="100%"
+                      width="100%"
+                      className="aspect-square object-cover w-full h-full rounded-md"
+                      src={image}
+                      alt={product.name}
+                    />
+                  </li>
+                ))}
+              </ul>
+            </div>
           ) : null}
-          <img
-            src={selectedImage}
-            alt={product.name}
-            className={`aspect-square object-cover object-center transition md:hover:opacity-75
-            ${product.id === selectedProduct ? " sm:w-5/6 xs:w-auto" : ""}
-            `}
-          />
+          <div
+            className={`aspect-square flex justify-center overflow-hidden rounded-md transition md:hover:opacity-75 ${
+              product.id === selectedProduct ? "sm:w-5/6 xs:w-auto" : "w-full"
+            }`}
+          >
+            <LazyLoadImage
+              effect="blur"
+              height="100%"
+              width="100%"
+              src={selectedImage}
+              alt={product.name}
+              className="aspect-square object-cover object-center"
+            />
+          </div>
         </div>
         <div
           className={` flex flex-col gap-3
@@ -111,7 +125,9 @@ const Card = ({ product, selectedProduct, setSelectedProduct }) => {
           <h3
             className={`mt-4  text-gray-100
           ${
-            product.id === selectedProduct ? "md:text-3xl sm:text-2xl xs:text-xl" : "xl:text-base xs:text-sm"
+            product.id === selectedProduct
+              ? "md:text-3xl sm:text-2xl xs:text-xl"
+              : "xl:text-base xs:text-sm"
           }
           `}
           >
@@ -133,7 +149,7 @@ const Card = ({ product, selectedProduct, setSelectedProduct }) => {
           >
             <p> السعر :</p>
             <p>
-              {product.price.toLocaleString() }
+              {product.price.toLocaleString()}
               <small className="text-slate-200"> د.ع</small>
             </p>
           </div>
