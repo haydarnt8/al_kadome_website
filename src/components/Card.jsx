@@ -3,15 +3,16 @@ import styles from "./Card.module.css";
 import "./animation.css";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
+import loading from "../image/loading.gif";
 
 const Card = ({ product, selectedProduct, setSelectedProduct }) => {
   const productRefs = useRef([]);
-  const images =
-    product.images.length === 0
+  const subImages =
+    product.subImages.length === 0
       ? [product.image]
-      : [product.image].concat(product.images.map((image) => image.image));
+      : [product.image].concat(product.subImages.map((subImage) => subImage.subImage));
 
-  const [selectedImage, setSelectedImage] = useState(images[0]);
+  const [selectedImage, setSelectedImage] = useState(subImages[0]);
 
   const handleClick = (productId) => {
     if (selectedProduct === productId) {
@@ -74,15 +75,15 @@ const Card = ({ product, selectedProduct, setSelectedProduct }) => {
           {product.id === selectedProduct ? (
             <div className="sm:h-auto xs:h-16 sm:w-[18%] xs:w-auto rounded-xl bg-[#00000078] p-1">
               <ul className="flex items-center gap-3  sm:flex-col xs:flex-row w-full h-full ">
-                {images.map((image, index) => (
+                {subImages.map((subImage, index) => (
                   <li
                     className={`sm:aspect-auto xs:aspect-square sm:w-full xs:w-auto sm:h-auto xs:h-full ${
-                      image === selectedImage ? "" : "opacity-50"
+                      subImage === selectedImage ? "" : "opacity-50"
                     }`}
                     key={index}
                     onClick={(e) => {
                       e.stopPropagation();
-                      setSelectedImage(image);
+                      setSelectedImage(subImage);
                     }}
                   >
                     <LazyLoadImage
@@ -90,7 +91,8 @@ const Card = ({ product, selectedProduct, setSelectedProduct }) => {
                       height="100%"
                       width="100%"
                       className="aspect-square object-cover w-full h-full rounded-md"
-                      src={image}
+                      placeholderSrc={loading}
+                      src={subImage}
                       alt={product.name}
                     />
                   </li>
@@ -99,7 +101,7 @@ const Card = ({ product, selectedProduct, setSelectedProduct }) => {
             </div>
           ) : null}
           <div
-            className={`aspect-square flex justify-center overflow-hidden rounded-md transition md:hover:opacity-75 ${
+            className={`aspect-square flex justify-center items-center overflow-hidden rounded-md transition md:hover:opacity-75 ${
               product.id === selectedProduct ? "sm:w-5/6 xs:w-auto" : "w-full"
             }`}
           >
@@ -109,6 +111,7 @@ const Card = ({ product, selectedProduct, setSelectedProduct }) => {
               width="100%"
               src={selectedImage}
               alt={product.name}
+              placeholderSrc={loading}
               className="aspect-square object-cover object-center"
             />
           </div>
