@@ -60,8 +60,8 @@ function CategoryNav() {
                   <Link
                     to={
                       selectedCategory === category.id
-                        ? "al_kadome_website/"
-                        : `al_kadome_website/cid/${category.id}`
+                        ? "/"
+                        : `/cid/${category.id}`
                     }
                   >
                     <button
@@ -73,7 +73,6 @@ function CategoryNav() {
                       onClick={() => {
                         dispatch(resetPage());
                         dispatch(resetProducts());
-                        console.log("clicked category");
                       }}
                     >
                       {category.name}
@@ -98,8 +97,8 @@ function CategoryNav() {
                 <Link
                   to={
                     selectedSubCategory === subCategory.id
-                      ? `al_kadome_website/cid/${selectedCategory}`
-                      : `al_kadome_website/cid/${selectedCategory}/s_cid/${subCategory.id}`
+                      ? `/cid/${selectedCategory}`
+                      : `/cid/${selectedCategory}/s_cid/${subCategory.id}`
                   }
                 >
                   <button
@@ -111,7 +110,6 @@ function CategoryNav() {
                     onClick={() => {
                       dispatch(resetPage());
                       dispatch(resetProducts());
-                      console.log("clicked sub category");
                     }}
                   >
                     {subCategory.name}

@@ -11,10 +11,15 @@ const Cards = ({ data, isLoading, error }) => {
   const [selectedProduct, setSelectedProduct] = useState(0);
   useEffect(() => {
     if (data && data.products) {
+      console.log("data.products");
       dispatch(setProdutData(data.products));
     }
+    if (error) {
+      console.log("error");
+      dispatch(setProdutData([]));
+    } 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data]);
+  }, [data, error]);
 
 
   return (

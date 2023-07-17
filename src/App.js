@@ -15,10 +15,10 @@ function App() {
       <Header />
       <CategoryNav />
       <Routes>
-        <Route path="al_kadome_website/" element={<AllProduct />} />
-        <Route path="al_kadome_website/cid/:id" element={<ProductByCategory />}  />
-        <Route path="al_kadome_website/cid/:id/s_cid/:id" element={<ProductBySubCategory />} />
-        <Route path="al_kadome_website/search/:title" element={<ProductBySearch />} />
+        <Route path="/" element={<AllProduct />} />
+        <Route path="/cid/:id" element={<ProductByCategory />}  />
+        <Route path="/cid/:id/s_cid/:id" element={<ProductBySubCategory />} />
+        <Route path="/search/:title" element={<ProductBySearch />} />
       </Routes>
       <Footer />
 

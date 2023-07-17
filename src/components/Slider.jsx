@@ -47,8 +47,6 @@ const Slider = () => {
     <div
       id="Home"
       className=" md:h-[65vh] sm:h-[60vh] xs:h-[55vh] w-full m-auto relative group"
-      // onMouseEnter={() => setHover(false)}
-      // onMouseLeave={() => setHover(true)}
     >
       <div
         style={{

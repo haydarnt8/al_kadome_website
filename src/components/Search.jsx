@@ -15,7 +15,7 @@ const Search = () => {
 
   useEffect(() => {
     if (input === "") {
-      navigate("/al_kadome_website");
+      navigate("/");
       dispatch(resetProducts());
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -33,7 +33,7 @@ const Search = () => {
         aria-label="Search"
         aria-describedby="button-addon2"
       />
-      <Link to={ input !== "" ? `/al_kadome_website/search/${input}` : "/al_kadome_website"}
+      <Link to={ input !== "" ? `/search/${input}` : "/"}
         onClick={() => {
           if (input !== ""){
           dispatch(resetPage());
