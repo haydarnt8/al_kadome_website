@@ -8,8 +8,6 @@ const ProductByCategory = () => {
   const { page } = useSelector((state) => state.page);
   const { data, isLoading, error } = useGetProductByCategoryQuery({ id, page });
 
-  console.log("by category");
-
   return <Cards data={data} isLoading={isLoading} error={error} />;
 };
 

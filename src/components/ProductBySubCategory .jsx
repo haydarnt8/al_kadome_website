@@ -10,7 +10,6 @@ const ProductBySubCategory = () => {
     id,
     page,
   });
-  console.log('by sub category'+id +"   "+data);
 
   return <Cards data={data} isLoading={isLoading} error={error} />;
 };
