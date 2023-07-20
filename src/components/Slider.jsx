@@ -52,10 +52,10 @@ const Slider = () => {
         style={{
           backgroundImage: `url(https://firebasestorage.googleapis.com/v0/b/al-kadome-9f8ab.appspot.com/o/775153.webp?alt=media&token=933eb53e-83c9-4837-abb9-2791f781a671)`,
         }}
-        className="w-full h-full bg-center bg-cover duration-500"
+        className="w-full h-full flex items-center justify-center bg-center bg-cover duration-500"
       >
         <div
-          className=" w-full h-full flex  items-center p-10   "
+          className=" w-11/12 h-full flex items-center py-10"
           style={gradientStyle}
         >
           <div className="w-2/5 flex flex-col gap-5 md:w-1/2  xs:w-4/5">

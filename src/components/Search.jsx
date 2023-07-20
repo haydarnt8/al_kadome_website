@@ -4,7 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { resetPage } from "../app/services/pageSlice";
 import { resetProducts } from "../app/services/productSlice";
 
-
 const Search = () => {
   const dispatch = useDispatch();
   const [input, setInput] = useState("");
@@ -33,11 +32,12 @@ const Search = () => {
         aria-label="Search"
         aria-describedby="button-addon2"
       />
-      <Link to={ input !== "" ? `/search/${input}` : "/"}
+      <Link
+        to={input !== "" ? `/search/${input}` : "/"}
         onClick={() => {
-          if (input !== ""){
-          dispatch(resetPage());
-          dispatch(resetProducts());
+          if (input !== "") {
+            dispatch(resetPage());
+            dispatch(resetProducts());
           }
         }}
       >

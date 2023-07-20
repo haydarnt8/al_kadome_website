@@ -38,7 +38,9 @@ function CategoryNav() {
     <>
       <div id="Category" className="w-11/12">
         <div className=" py-3">
-          <h1 className="sm:text-4xl xs:text-3xl text-slate-50 font-bold py-5 ">الاقسام</h1>
+          <h1 className="sm:text-4xl xs:text-3xl text-slate-50 font-bold py-5 ">
+            الاقسام
+          </h1>
         </div>
 
         <div className=" font-medium text-center text-[#9C3D54] border-b border-[#322717] ">
@@ -84,9 +86,14 @@ function CategoryNav() {
             )}
           </ul>
         </div>
-        <ul className="flex gap-4 py-4 sm:text-lg xs:text-base">
+        <ul className="flex flex-wrap gap-4 py-4 sm:text-lg xs:text-base">
           {subIsLoading ? (
-            <p>loding...</p>
+            <>
+              <SkeletonCategory />
+              <SkeletonCategory />
+              <SkeletonCategory />
+              <SkeletonCategory />
+            </>
           ) : subError ? (
             <div className="text-center text-2xl text-red-500">
               {subError.message}

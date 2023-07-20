@@ -5,7 +5,7 @@ import { setProdutData } from "../app/services/productSlice";
 import SkeletonCard from "./SkeletonCard";
 import LoadMoreButton from "./LoadMoreButton";
 
-const Cards = ({ data, isLoading, error }) => {
+const Cards = ({ data, isLoading, error, isFetching }) => {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products.data);
   const [selectedProduct, setSelectedProduct] = useState(0);
@@ -15,13 +15,12 @@ const Cards = ({ data, isLoading, error }) => {
     }
     if (error) {
       dispatch(setProdutData([]));
-    } 
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data, error]);
 
-
   return (
-    <div  id="Products" className="w-11/12 py-4">
+    <div id="Products" className="w-11/12 py-4">
       <h1 className="sm:text-4xl xs:text-3xl text-slate-50 font-bold pb-10">
         المنتجات
       </h1>
@@ -44,7 +43,9 @@ const Cards = ({ data, isLoading, error }) => {
           ))
         )}
       </div>
-      {data && data.has_next ? <LoadMoreButton /> : null}
+      {data && data.has_next ? (
+        <LoadMoreButton isFetching={isFetching} />
+      ) : null}
     </div>
   );
 };

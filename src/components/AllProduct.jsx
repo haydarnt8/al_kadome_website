@@ -4,10 +4,18 @@ import Cards from "../components/Cards";
 import { useSelector } from "react-redux";
 
 function AllProduct() {
-  const { data, isLoading, error } = useGetAllProductQuery(
+  const { data, isLoading, error, isFetching } = useGetAllProductQuery(
     useSelector((state) => state.page.page)
   );
-  return <Cards data={data} isLoading={isLoading} error={error} />;
+
+  return (
+    <Cards
+      data={data}
+      isLoading={isLoading}
+      error={error}
+      isFetching={isFetching}
+    />
+  );
 }
 
 export default AllProduct;

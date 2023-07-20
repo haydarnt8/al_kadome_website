@@ -6,12 +6,20 @@ import { useSelector } from "react-redux";
 const ProductBySubCategory = () => {
   const { id } = useParams();
   const { page } = useSelector((state) => state.page);
-  const { data, isLoading, error } = useGetProductBySubCategoryQuery({
-    id,
-    page,
-  });
+  const { data, isLoading, error, isFetching } =
+    useGetProductBySubCategoryQuery({
+      id,
+      page,
+    });
 
-  return <Cards data={data} isLoading={isLoading} error={error} />;
+  return (
+    <Cards
+      data={data}
+      isLoading={isLoading}
+      error={error}
+      isFetching={isFetching}
+    />
+  );
 };
 
 export default ProductBySubCategory;
