@@ -6,11 +6,14 @@ import "react-lazy-load-image-component/src/effects/blur.css";
 import loading from "../image/loading.gif";
 
 const Card = ({ product, selectedProduct, setSelectedProduct }) => {
+  const currency = "د.ع";
   const productRefs = useRef([]);
   const subImages =
     product.subImages.length === 0
       ? [product.image]
-      : [product.image].concat(product.subImages.map((subImage) => subImage.subImage));
+      : [product.image].concat(
+          product.subImages.map((subImage) => subImage.subImage)
+        );
 
   const [selectedImage, setSelectedImage] = useState(subImages[0]);
 
@@ -152,8 +155,9 @@ const Card = ({ product, selectedProduct, setSelectedProduct }) => {
           >
             <p> السعر :</p>
             <p>
+              {/* {(product.price*1000).toLocaleString()} */}
               {product.price.toLocaleString()}
-              <small className="text-slate-200"> د.ع</small>
+              <small className="text-slate-200"> {currency}</small>
             </p>
           </div>
           {product.id === selectedProduct && (
