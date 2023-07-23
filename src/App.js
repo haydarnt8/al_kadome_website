@@ -1,4 +1,4 @@
-import Slider from "./components/Slider";
+import About from "./components/About";
 import CategoryNav from "./components/CategoryNav";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
@@ -11,7 +11,7 @@ import ProductBySearch from "./components/ProductBySearch";
 function App() {
   return (
     <main className="bg-[#0f0f0f] flex flex-col items-center  ">
-      <Slider />
+      <About />
       <Header />
       <CategoryNav />
       <Routes>

@@ -1,43 +1,6 @@
 import { MdLocationOn } from "react-icons/md";
 
-const Slider = () => {
-  // const slides = [
-  //   {
-  //     url: "https://picsum.photos/id/870/200/300?grayscale&blur=2",
-  //   },
-  //   {
-  //     url: "https://picsum.photos/id/870/200/300?grayscale&blur=2",
-  //   },
-  //   {
-  //     url: "https://picsum.photos/id/870/200/300?grayscale&blur=2",
-  //   },
-
-  //   {
-  //     url: "https://picsum.photos/id/870/200/300?grayscale&blur=2",
-  //   },
-  //   {
-  //     url: "https://picsum.photos/id/870/200/300?grayscale&blur=2",
-  //   },
-  // ];
-
-  // const [currentIndex, setCurrentIndex] = useState(0);
-  // const [hover, setHover] = useState(true);
-
-  // const nextSlide = () => {
-  //   const isLastSlide = currentIndex === slides.length - 1;
-  //   const newIndex = isLastSlide ? 0 : currentIndex + 1;
-  //   setCurrentIndex(newIndex);
-  // };
-
-  // useEffect(() => {
-  //   if (hover) {
-  //     const interval = setInterval(() => {
-  //       nextSlide();
-  //     }, 4500);
-  //     return () => clearInterval(interval);
-  //   }
-  // });
-
+const About = () => {
   const gradientStyle = {
     background:
       "linear-gradient(270deg, rgba(0,0,0,1) 10%,rgba(0,0,0,1) 20%, rgba(0,0,0,0) 100%)",
@@ -153,4 +116,4 @@ const Slider = () => {
   );
 };
 
-export default Slider;
+export default About;
