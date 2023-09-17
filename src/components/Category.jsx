@@ -4,9 +4,11 @@ import { resetPage } from "../app/services/pageSlice";
 import { resetProducts } from "../app/services/productSlice";
 import SkeletonCategory from "./SkeletonCategory";
 import { MdClear } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Category = ({ selectedCategory }) => {
+  const location = useLocation();
+  // console.log(location.pathname);
   const dispatch = useDispatch();
   const { data: category, isLoading, error } = useGetCategoryQuery();
 
@@ -22,30 +24,51 @@ const Category = ({ selectedCategory }) => {
       ) : error ? (
         <div className="text-center text-2xl text-red-500">{error.message}</div>
       ) : (
-        category.map((category) => (
-          <li key={category.id}>
-            <Link
-              to={
-                selectedCategory === category.id ? "/" : `/cid/${category.id}`
-              }
-            >
+        <>
+          <li key="all">
+            <Link to="/">
               <button
                 className={`flex items-center gap-1 p-2 border-b-2 border-transparent transition rounded-t-lg hover:border-gray-300 ${
-                  selectedCategory === category.id
+                  isNaN(selectedCategory) || selectedCategory === null
                     ? "text-slate-50 border-slate-50"
                     : "text-gray-500 border-transparent"
                 }`}
                 onClick={() => {
-                  dispatch(resetPage());
-                  dispatch(resetProducts());
+                  if (location.pathname !== "/") {
+                    dispatch(resetPage());
+                    dispatch(resetProducts());
+                  }
                 }}
               >
-                {category.name}
-                {selectedCategory === category.id && <MdClear />}
+                الكل
               </button>
             </Link>
           </li>
-        ))
+          {category.map((category) => (
+            <li key={category.id}>
+              <Link
+                to={
+                  selectedCategory === category.id ? "/" : `/cid/${category.id}`
+                }
+              >
+                <button
+                  className={`flex items-center gap-1 p-2 border-b-2 border-transparent transition rounded-t-lg hover:border-gray-300 ${
+                    selectedCategory === category.id
+                      ? "text-slate-50 border-slate-50"
+                      : "text-gray-500 border-transparent"
+                  }`}
+                  onClick={() => {
+                    dispatch(resetPage());
+                    dispatch(resetProducts());
+                  }}
+                >
+                  {category.name}
+                  {selectedCategory === category.id && <MdClear />}
+                </button>
+              </Link>
+            </li>
+          ))}
+        </>
       )}
     </ul>
   );

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Card from "./Card";
 import { useDispatch, useSelector } from "react-redux";
 import { setProdutData } from "../app/services/productSlice";
@@ -8,7 +8,6 @@ import LoadMoreButton from "./LoadMoreButton";
 const Cards = ({ data, isLoading, error, isFetching }) => {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products.data);
-  const [selectedProduct, setSelectedProduct] = useState(0);
   useEffect(() => {
     if (data && data.products) {
       dispatch(setProdutData(data.products));
@@ -37,8 +36,6 @@ const Cards = ({ data, isLoading, error, isFetching }) => {
             <Card
               key={product.id}
               product={product}
-              selectedProduct={selectedProduct}
-              setSelectedProduct={setSelectedProduct}
             />
           ))
         )}
