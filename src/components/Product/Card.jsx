@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./Card.module.css";
-import "./animation.css";
+import "../animation.css";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
-import loading from "../image/loading.gif";
+import loading from "../../image/loading.gif";
 // import { useHistory } from "react-router-dom";
 
 const Card = ({ product }) => {
@@ -30,22 +30,25 @@ const Card = ({ product }) => {
       navigate(`${location.pathname}?product_id=${productId}`, {
         state: { clicked: true },
       }); // pass a flag in the state
-    }
-    const selectedProductRef = productRefs.current.find(
-      (ref) => ref.id === productId
-    );
-    if (selectedProductRef) {
-      const scrollToProduct = () => {
-        selectedProductRef.element.scrollIntoView({
-          block: "center",
-          behavior: "smooth",
-          inline: "center",
-        });
-      };
-      // Delay the scroll to allow the product to transition to its new position
-      setTimeout(() => {
-        requestAnimationFrame(scrollToProduct);
-      }, 100);
+    } else if (productId === selectedProduct) {
+      navigate(`${location.pathname}`, { state: { clicked: false } }); // pass a flag in the state
+    } else {
+      const selectedProductRef = productRefs.current.find(
+        (ref) => ref.id === productId
+      );
+      if (selectedProductRef) {
+        const scrollToProduct = () => {
+          selectedProductRef.element.scrollIntoView({
+            block: "center",
+            behavior: "smooth",
+            inline: "center",
+          });
+        };
+        // Delay the scroll to allow the product to transition to its new position
+        setTimeout(() => {
+          requestAnimationFrame(scrollToProduct);
+        }, 100);
+      }
     }
   };
 

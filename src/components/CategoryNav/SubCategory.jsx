@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { resetPage } from "../app/services/pageSlice";
-import { resetProducts } from "../app/services/productSlice";
+import { resetPage } from "../../app/services/pageSlice";
+import { resetProducts } from "../../app/services/productSlice";
 import SkeletonCategory from "./SkeletonCategory";
 import { MdClear } from "react-icons/md";
-import { useGetSubCategoryQuery } from "../app/services/productApi";
+import { useGetSubCategoryQuery } from "../../app/services/productApi";
 
 const SubCategory = ({
   selectedCategory,

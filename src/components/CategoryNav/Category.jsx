@@ -1,7 +1,7 @@
-import { useGetCategoryQuery } from "../app/services/productApi";
+import { useGetCategoryQuery } from "../../app/services/productApi";
 import { useDispatch } from "react-redux";
-import { resetPage } from "../app/services/pageSlice";
-import { resetProducts } from "../app/services/productSlice";
+import { resetPage } from "../../app/services/pageSlice";
+import { resetProducts } from "../../app/services/productSlice";
 import SkeletonCategory from "./SkeletonCategory";
 import { MdClear } from "react-icons/md";
 import { Link, useLocation } from "react-router-dom";

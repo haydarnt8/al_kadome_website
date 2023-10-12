@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import { resetPage } from "../app/services/pageSlice";
-import { resetProducts } from "../app/services/productSlice";
+import { resetPage } from "../../app/services/pageSlice";
+import { resetProducts } from "../../app/services/productSlice";
 import { useDispatch } from "react-redux";
 
 

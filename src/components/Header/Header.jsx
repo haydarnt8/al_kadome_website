@@ -1,4 +1,4 @@
-import logo from "../image/download.webp";
+import logo from "../../image/download.webp";
 import Search from "./Search";
 const Header = () => {
   return (

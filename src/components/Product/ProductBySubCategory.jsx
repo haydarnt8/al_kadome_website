@@ -1,15 +1,16 @@
 import { useParams } from "react-router-dom";
-import { useGetProductByCategoryQuery } from "../app/services/productApi";
-import Cards from "../components/Cards";
+import { useGetProductBySubCategoryQuery } from "../../app/services/productApi";
+import Cards from "./Cards";
 import { useSelector } from "react-redux";
 
-const ProductByCategory = () => {
+const ProductBySubCategory = () => {
   const { id } = useParams();
   const { page } = useSelector((state) => state.page);
-  const { data, isLoading, error, isFetching } = useGetProductByCategoryQuery({
-    id,
-    page,
-  });
+  const { data, isLoading, error, isFetching } =
+    useGetProductBySubCategoryQuery({
+      id,
+      page,
+    });
 
   return (
     <Cards
@@ -21,4 +22,4 @@ const ProductByCategory = () => {
   );
 };
 
-export default ProductByCategory;
+export default ProductBySubCategory;

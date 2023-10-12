@@ -1,12 +1,12 @@
-import About from "./components/About";
-import CategoryNav from "./components/CategoryNav";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
-import { Route, Routes} from "react-router-dom";
-import AllProduct from "./components/AllProduct";
-import ProductByCategory from "./components/ProductByCategory";
-import ProductBySubCategory from "./components/ProductBySubCategory ";
-import ProductBySearch from "./components/ProductBySearch";
+import About from "./components/Header/About";
+import CategoryNav from "./components/CategoryNav/CategoryNav";
+import Footer from "./components/Footer/Footer";
+import Header from "./components/Header/Header";
+import { Route, Routes } from "react-router-dom";
+import AllProduct from "./components/Product/AllProduct";
+import ProductByCategory from "./components/Product/ProductByCategory";
+import ProductBySubCategory from "./components/Product/ProductBySubCategory";
+import ProductBySearch from "./components/Product/ProductBySearch";
 
 function App() {
 

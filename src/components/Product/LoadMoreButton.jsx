@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { setPage } from "../app/services/pageSlice";
+import { setPage } from "../../app/services/pageSlice";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 const LoadMoreButton = ({ isFetching }) => {

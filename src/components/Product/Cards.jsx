@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import Card from "./Card";
 import { useDispatch, useSelector } from "react-redux";
-import { setProdutData } from "../app/services/productSlice";
+import { setProdutData } from "../../app/services/productSlice";
 import SkeletonCard from "./SkeletonCard";
 import LoadMoreButton from "./LoadMoreButton";
 

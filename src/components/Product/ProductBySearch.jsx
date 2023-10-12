@@ -1,6 +1,6 @@
 import React from 'react'
 import Cards from './Cards'
-import { useGetProductBySearchQuery} from '../app/services/productApi'
+import { useGetProductBySearchQuery} from '../../app/services/productApi'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 

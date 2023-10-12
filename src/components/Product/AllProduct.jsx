@@ -1,6 +1,6 @@
 import React from "react";
-import { useGetAllProductQuery } from "../app/services/productApi";
-import Cards from "../components/Cards";
+import { useGetAllProductQuery } from "../../app/services/productApi";
+import Cards from "./Cards";
 import { useSelector } from "react-redux";
 
 function AllProduct() {

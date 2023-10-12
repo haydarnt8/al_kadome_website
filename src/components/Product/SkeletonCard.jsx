@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Card.module.css";
-import "./animation.css";
+import "../animation.css";
 
 const SkeletonCard = () => {
   return (
